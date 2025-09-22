@@ -274,3 +274,83 @@ while user_choice != 0:
         break
 '''
 
+#задание 1
+n = int(input("введите число от 1 до 100: "))
+if n < 1 or n > 100:
+    print('число должно быть в диапазоне от 1 до 100')
+else:
+    if n % 3 == 0 or n % 5 == 0:
+        print('fizz buzz')
+    elif n % 3 == 0:
+        print('fizz')
+    elif n % 5 == 0:
+        print('buzz')
+    else:
+        print(n)
+
+#задание 2
+n = int(input('введите число: '))
+n1 = int(input('выберете степень от 0 до 7: '))
+if n1 == 0:
+    print(n ** 0)
+elif n1 == 1:
+    print(n ** 1)
+elif n1 == 2:
+    print(n ** 2)
+elif n1 == 3:
+    print(n ** 3)
+elif n1 == 4:
+    print(n ** 4)
+elif n1 == 5:
+    print(n ** 5)
+elif n1 == 6:
+    print(n ** 6)
+elif n1 == 7:
+    print(n ** 7)
+else:
+    print('не та степень')
+
+#задание 3
+n = int(input('введите стоимость разговора: '))
+n1 = int(input('выберете с какого оператора вы звоните с 1)МТС или 2)мегафона: '))
+n2 = int(input('на какой оператор: 1)Билайн, 2)Теле 2: '))
+if n1 == 1:
+ if n2 == 1:
+    print(n * 1.5)
+if n1 == 2:
+ if n2 == 1:
+    print(n * 1.8)
+if n1 == 1:
+ if n2 == 2:
+    print(n * 1.2)
+if n1 == 2:
+ if n2 == 2:
+     print(n * 1.4)
+
+#задание 4
+n = int(input('введите уровень продаж для первого менеджера: '))
+n1 = int(input('введите уровень продаж для второго: '))
+n2 = int(input('введите уровень продаж для третьего: '))
+zp = 200
+if n <= 500:
+    print(zp + (n * 0.3))
+elif n >= 500 or n <= 1000:
+    print(zp + (n * 0.5))
+elif n >= 1000:
+    print(zp + (n * 0.8))
+if n1 <= 500:
+    print(zp + (n * 0.3))
+elif n1 >= 500 or n <= 1000:
+    print(zp + (n * 0.5))
+elif n1 >= 1000:
+    print(zp + (n * 0.8))
+if n2 <= 500:
+    print(zp + (n * 0.3))
+elif n2 >= 500 or n <= 1000:
+    print(zp + (n * 0.5))
+elif n2 >= 1000:
+    print(zp + (n * 0.8))
+else:
+    print('ошибка')
+print(f'самый лучший работник:{max(n,n1,n2)} премия 200$')
+
