@@ -154,6 +154,7 @@ else:
 от выбора пользователя программа переводит метры в мили, дюймы или ярды.
 '''
 
+'''
 #задание 1
 n = int(input("введите первое число"))
 n1 = int(input("введите второе число"))
@@ -213,3 +214,63 @@ elif n1 == "3":
     print(f"метры в ярдах:{result}")
 else:
     print('ошибка, выбери 1,2,3')
+ '''
+'''
+user_value = int(input("введите число "))
+var_user = 1
+while var_user > 10:
+    print(f"{user_value} * {var_user} = {user_value*var_user}")
+'''
+
+'''
+while True:
+    print("ваша задача ввести значение в рублях. \n"
+          "выберете пункт для перевода: \n"
+          "1. перевод в доллары \n"
+          "2. перевод в юани \n"
+          "3. перевод в тенге \n"
+          "4. перевод в бел. рубли \n"
+          "0. выход из приложения")
+    user_choice = int(input("ваш выбор: "))
+    if user_choice == 0:
+        print('до скорой встречи')
+        break
+    elif user_choice == 1:
+         print(f'кол рублей, после операции: {user_ru * 0.011963}')
+    elif user_choice == 2:
+        print(f'кол рублей после операции: {user_ru * 0.085426}')
+    elif user_choice == 3:
+        print(f'кол рублей после операции: {user_ru * 6.48}')
+    elif user_choice == 4:
+        print(f'кол рублей после операции: {user_ru * 0.036396}')
+'''
+
+'''
+user_min = int(input("введите левую границу диапазона: "))
+user_max = int(input("введите правую границу диапазона: "))
+user_value = int(input("введите число для поиска в диапазоне: "))
+while user_min < user_max:
+    if user_min == user_value:
+        print(f"  !{user_min}!")
+    else:
+        print(user_value, end= '')
+        user_min += 1
+'''
+'''
+from random import randint
+value_random = randint(1, 500)
+print('добро пожаловать в игру <угадай число>')
+print('ваша задача - угадать число в интервале от 1 до 500 \n'
+      'если введен 0 это выход \n'
+      'удачи')
+user_choice = -50
+while user_choice != 0:
+    if user_choice < value_random:
+        print('ваше число больше')
+    elif user_choice > value_random:
+        print('ваше число меньше')
+    elif user_choice == value_random:
+        print("победа")
+        break
+'''
+
