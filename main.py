@@ -274,6 +274,7 @@ while user_choice != 0:
         break
 '''
 
+'''
 #задание 1
 n = int(input("введите число от 1 до 100: "))
 if n < 1 or n > 100:
@@ -353,4 +354,81 @@ elif n2 >= 1000:
 else:
     print('ошибка')
 print(f'самый лучший работник:{max(n,n1,n2)} премия 200$')
+'''
 
+'''
+string = input()
+string1 = 'hello'
+print(len(string1))
+print(string1 * 10)
+print(string + string1)
+print(string1[0])
+print(string1[0:5])
+print(string1[0:10:2])
+print(string1.find("world"))
+print(string1.find('l'))
+#replace(old, new)
+print('date_1'.replace("t","TT"))
+#метод count - подсчет вхождений(элементов)
+print(string1.count('l'))
+#использование списков
+primes = [2,3,5,7,11,13]
+raindow = ['red', 'orange', 'yellow', 'green', 'blue', 'Ingigo', 'Violet']
+print(type(primes))
+print(primes[0])
+print(primes)
+for i in primes:
+    print(i, end=' ')
+print()
+list_user = []
+from random import randint
+for i in range(10):
+    list_user.append(randint(1, 10))
+print(list_user)
+list_user.pop()
+print(list_user)
+#split and join
+# 1 2 3
+str_val = input()
+str_list = str_val.split()  # str_list = ['1','2','3']
+#указание параметра для split - это разделитель строк,
+#убирает элемент и формирует список
+for i in str_val:
+    if type(i) == int: #decimal(i)
+        str_list.append(i) #int(i)
+lisr_color = ['red', 'green', 'blue']
+print("+".join(lisr_color))
+#генераторы списков
+#заполнить список случайным образом, только четные, 10
+list_a = []
+while len(list_a)<10:
+    a = randint(0, 10)
+    if a % 2 == 0:
+        list_a.append(a)
+print(list_a)
+#способ 2
+list_b = [i for i in range(10) if a % 2 == 0]
+print(list_b)
+#list_c = [randint(0,10) for i in range(10)
+#практика
+
+задание 1 
+написать программу,
+вычисляющую произведение элементов списка целых.
+
+list_u = []
+for i in range(10):
+    list.append(randint(1, 10))
+summ = 0
+for i in list_u:
+    summ += i
+print(f"список:{list_u} \nсумма элементов: {summ}")
+'''
+
+
+'''
+задание 2
+напишите минимума для нахождения(самое маленькое), не используя спец.
+функции, в списке целых. список передается в качестве параметра.
+полученный результат + список возвращается на экран.
+'''
