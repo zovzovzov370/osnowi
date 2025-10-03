@@ -455,6 +455,9 @@ print(f"список:{list_u} \nсумма элементов: {summ}")
 Fizz Buzz. Если число не кратно не 3 и 5 нужно вывести 
 само число
 '''
+
+
+'''
 #задание 1
 n = int(input("введите начало диапазона: "))
 n1 = int(input("введите конец диапазона: "))
@@ -496,3 +499,124 @@ elif n1 % 5 == 0:
         print('buzz')
 else:
         print(n)
+'''
+
+'''
+Задание 1
+ Показать таблицу умножения для числа, введенного 
+пользователем. Например, если пользователь вводит 
+число 7, нужно показать:
+ 7 * 1 = 7
+ 7 * 2 = 14
+ 7 * 3 = 21
+ …
+ Задание 2
+ Написать программу – конвертер валют. Реализовать 
+общение с пользователем через меню.
+ Задание 3
+ Пользователь вводит с клавиатуры две границы ди
+апазона и число. Если число не попадает в диапазон, 
+программа просит пользователя повторно ввести число, 
+и так до тех пор, пока он не введет число правильно. Про
+грамма отображает все числа диапазона, выделяя число 
+восклицательными знаками. Например:
+ 1 2 3 !4! 5 6 7.
+ Задание 4
+ Написать игру «Угадай число». Программа загадывает 
+число в диапазоне от 1 до 500. Пользователь пытается
+'''
+
+#задание 1
+n = int(input("введите число: "))
+for i in range(1, 11):
+    result = n * i
+    print(f"{n} * {i} = {result}")
+#задание 2
+def main():
+    exchange_rates = {
+        'USD': 1.0,
+        'EUR': 0.85,
+        'GBP': 0.73,
+        'JPY': 110.0,
+        'RUB': 75.0
+    }
+    while True:
+        print("конвертер волют")
+        print("1) конвертировать валюту")
+        print("2) показать доступные валюты")
+        print("3) выйти из программы")
+        choice = input("выберите пункт меню 1-3: ")
+        if choice == '1':
+            convert_currency(exchange_rates)
+        elif choice == '2':
+            show_currencies(exchange_rates)
+        elif choice == '3':
+            print("до свидания")
+            break
+        else:
+            print("ошибка, выберете 1,2,3")
+def convert_currency(rates):
+    print("\nконвертация валюты")
+    print("доступные валюты:", ", ".join(rates.keys()))
+    from_currency = input("из какой валюты конвертировать например, USD: ").upper()
+    to_currency = input("в какую валюту конвертировать например, EUR: ").upper()
+    if from_currency not in rates or to_currency not in rates:
+        print("ошибка: неизвестная валюта")
+        return
+    try:
+        amount = float(input(f"сумма в {from_currency}: "))
+        if amount <= 0:
+            print("сумма должна быть положительной")
+            return
+    except ValueError:
+        print("ошибка: введите корректное число")
+        return
+    amount_in_usd = amount / rates[from_currency]
+    result = amount_in_usd * rates[to_currency]
+    print(f"\nрезультат конвертации:")
+    print(f"{amount:.2f} {from_currency} = {result:.2f} {to_currency}")
+def show_currencies(rates):
+    print("\nдоступные валюты")
+    for currency, rate in rates.items():
+        print(f"{currency}: 1 USD = {rate} {currency}")
+if __name__ == "__main__":
+    main()
+
+#задание 3
+print("введите границы диапазона:")
+start = int(input("начало: "))
+end = int(input("конец: "))
+if start > end:
+    start, end = end, start
+while True:
+    number = int(input(f"введите число от {start} до {end}: "))
+    if start <= number <= end:
+        break
+    print("число вне диапазона! Попробуйте снова.")
+print(f"\nчисла диапазона {start}-{end}:")
+for i in range(start, end + 1):
+    if i == number:
+        print(f"!{i}!", end=" ")
+    else:
+        print(f"{i}", end=" ")
+print("\n")
+
+#задание 4
+import random
+print("угадай число от 1 до 500")
+secret = random.randint(1, 500)
+popitka = 0
+while True:
+    try:
+        user_guess = int(input("твое число: "))
+        popitka += 1
+        if user_guess < secret:
+            print("больше")
+        elif user_guess > secret:
+            print("меньше")
+        else:
+            print(f"правильно {secret}")
+            print(f"ты угадал за {popitka} попыток")
+            break
+    except:
+        print("вводи только числа")
