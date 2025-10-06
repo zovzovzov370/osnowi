@@ -526,97 +526,186 @@ else:
 число в диапазоне от 1 до 500. Пользователь пытается
 '''
 
-#задание 1
-n = int(input("введите число: "))
-for i in range(1, 11):
-    result = n * i
-    print(f"{n} * {i} = {result}")
-#задание 2
-def main():
-    exchange_rates = {
-        'USD': 1.0,
-        'EUR': 0.85,
-        'GBP': 0.73,
-        'JPY': 110.0,
-        'RUB': 75.0
-    }
-    while True:
-        print("конвертер волют")
-        print("1) конвертировать валюту")
-        print("2) показать доступные валюты")
-        print("3) выйти из программы")
-        choice = input("выберите пункт меню 1-3: ")
-        if choice == '1':
-            convert_currency(exchange_rates)
-        elif choice == '2':
-            show_currencies(exchange_rates)
-        elif choice == '3':
-            print("до свидания")
-            break
-        else:
-            print("ошибка, выберете 1,2,3")
-def convert_currency(rates):
-    print("\nконвертация валюты")
-    print("доступные валюты:", ", ".join(rates.keys()))
-    from_currency = input("из какой валюты конвертировать например, USD: ").upper()
-    to_currency = input("в какую валюту конвертировать например, EUR: ").upper()
-    if from_currency not in rates or to_currency not in rates:
-        print("ошибка: неизвестная валюта")
-        return
-    try:
-        amount = float(input(f"сумма в {from_currency}: "))
-        if amount <= 0:
-            print("сумма должна быть положительной")
-            return
-    except ValueError:
-        print("ошибка: введите корректное число")
-        return
-    amount_in_usd = amount / rates[from_currency]
-    result = amount_in_usd * rates[to_currency]
-    print(f"\nрезультат конвертации:")
-    print(f"{amount:.2f} {from_currency} = {result:.2f} {to_currency}")
-def show_currencies(rates):
-    print("\nдоступные валюты")
-    for currency, rate in rates.items():
-        print(f"{currency}: 1 USD = {rate} {currency}")
-if __name__ == "__main__":
-    main()
+# #задание 1
+# n = int(input("введите число: "))
+# for i in range(1, 11):
+#     result = n * i
+#     print(f"{n} * {i} = {result}")
+# #задание 2
+# def main():
+#     exchange_rates = {
+#         'USD': 1.0,
+#         'EUR': 0.85,
+#         'GBP': 0.73,
+#         'JPY': 110.0,
+#         'RUB': 75.0
+#     }
+#     while True:
+#         print("конвертер волют")
+#         print("1) конвертировать валюту")
+#         print("2) показать доступные валюты")
+#         print("3) выйти из программы")
+#         choice = input("выберите пункт меню 1-3: ")
+#         if choice == '1':
+#             convert_currency(exchange_rates)
+#         elif choice == '2':
+#             show_currencies(exchange_rates)
+#         elif choice == '3':
+#             print("до свидания")
+#             break
+#         else:
+#             print("ошибка, выберете 1,2,3")
+# def convert_currency(rates):
+#     print("\nконвертация валюты")
+#     print("доступные валюты:", ", ".join(rates.keys()))
+#     from_currency = input("из какой валюты конвертировать например, USD: ").upper()
+#     to_currency = input("в какую валюту конвертировать например, EUR: ").upper()
+#     if from_currency not in rates or to_currency not in rates:
+#         print("ошибка: неизвестная валюта")
+#         return
+#     try:
+#         amount = float(input(f"сумма в {from_currency}: "))
+#         if amount <= 0:
+#             print("сумма должна быть положительной")
+#             return
+#     except ValueError:
+#         print("ошибка: введите корректное число")
+#         return
+#     amount_in_usd = amount / rates[from_currency]
+#     result = amount_in_usd * rates[to_currency]
+#     print(f"\nрезультат конвертации:")
+#     print(f"{amount:.2f} {from_currency} = {result:.2f} {to_currency}")
+# def show_currencies(rates):
+#     print("\nдоступные валюты")
+#     for currency, rate in rates.items():
+#         print(f"{currency}: 1 USD = {rate} {currency}")
+# if __name__ == "__main__":
+#     main()
+#
+# #задание 3
+# print("введите границы диапазона:")
+# start = int(input("начало: "))
+# end = int(input("конец: "))
+# if start > end:
+#     start, end = end, start
+# while True:
+#     number = int(input(f"введите число от {start} до {end}: "))
+#     if start <= number <= end:
+#         break
+#     print("число вне диапазона! Попробуйте снова.")
+# print(f"\nчисла диапазона {start}-{end}:")
+# for i in range(start, end + 1):
+#     if i == number:
+#         print(f"!{i}!", end=" ")
+#     else:
+#         print(f"{i}", end=" ")
+# print("\n")
+#
+# #задание 4
+# import random
+# print("угадай число от 1 до 500")
+# secret = random.randint(1, 500)
+# popitka = 0
+# while True:
+#     try:
+#         user_guess = int(input("твое число: "))
+#         popitka += 1
+#         if user_guess < secret:
+#             print("больше")
+#         elif user_guess > secret:
+#             print("меньше")
+#         else:
+#             print(f"правильно {secret}")
+#             print(f"ты угадал за {popitka} попыток")
+#             break
+#     except:
+#         print("вводи только числа")
 
+# задание 1
+print('задание 1')
+def list(numbers):
+    result = 1
+    for number in numbers:
+        result *= number
+    return result
+mylist = [2, 3, 4, 5]
+print(f"список: {mylist}")
+print(f"произведение элементов: {list(mylist)}")
+# задание 2
+print('задание 2')
+def minimum(numbers):
+    if not numbers:
+        return None
+    minvalue = numbers[0]
+    for number in numbers:
+        if number < minvalue:
+            minvalue = number
+    return minvalue
+mylist = [5, 2, 8, 1, 9, 3]
+print(f"список: {mylist}")
+print(f"минимальный элемент: {minimum(mylist)}")
 #задание 3
-print("введите границы диапазона:")
-start = int(input("начало: "))
-end = int(input("конец: "))
-if start > end:
-    start, end = end, start
-while True:
-    number = int(input(f"введите число от {start} до {end}: "))
-    if start <= number <= end:
-        break
-    print("число вне диапазона! Попробуйте снова.")
-print(f"\nчисла диапазона {start}-{end}:")
-for i in range(start, end + 1):
-    if i == number:
-        print(f"!{i}!", end=" ")
-    else:
-        print(f"{i}", end=" ")
-print("\n")
-
-#задание 4
-import random
-print("угадай число от 1 до 500")
-secret = random.randint(1, 500)
-popitka = 0
-while True:
-    try:
-        user_guess = int(input("твое число: "))
-        popitka += 1
-        if user_guess < secret:
-            print("больше")
-        elif user_guess > secret:
-            print("меньше")
-        else:
-            print(f"правильно {secret}")
-            print(f"ты угадал за {popitka} попыток")
-            break
-    except:
-        print("вводи только числа")
+print('задание 3')
+def is_prime(n):
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(n ** 0.5) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+def count_primes(numbers):
+    count = 0
+    num = []
+    for number in numbers:
+        if is_prime(number):
+            count += 1
+            num.append(number)
+    return count, num
+mylist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+count, primes = count_primes(mylist)
+print(f"список: {mylist}")
+print(f"простые числа: {primes}")
+print(f"количество простых чисел: {count}")
+# задание 4
+print('задание 4')
+def remove_number(numbers, target):
+    original_length = len(numbers)
+    while target in numbers:
+        numbers.remove(target)
+    deleted_count = original_length - len(numbers)
+    return deleted_count
+mylist = [1, 2, 3, 2, 4, 2, 5]
+num = 2
+print(f"исходный список: {mylist}")
+deleted = remove_number(mylist, num)
+print(f"число для удаления: {num}")
+print(f"количество удаленных: {deleted}")
+print(f"список после удаления: {mylist}")
+# задание 5
+print('задание 5')
+def combine_lists(list1, list2):
+    combined = list1 + list2
+    return combined
+n = [1, 2, 3]
+n1 = [4, 5, 6]
+result = combine_lists(n, n1)
+print(f"Первый список: {n}")
+print(f"Второй список: {n1}")
+print(f"Объединенный список: {result}")
+#задание 6
+print('задание 6')
+def list(numbers, power):
+    result = []
+    for number in numbers:
+        result.append(number ** power)
+    return result
+my_list = [1, 2, 3, 4, 5]
+exponent = 3
+result = list(my_list, exponent)
+print(f"исходный список: {my_list}")
+print(f"степень: {exponent}")
+print(f"результат: {result}")
