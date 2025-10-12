@@ -622,6 +622,7 @@ else:
 #         print("вводи только числа")
 
 # задание 1
+'''
 print('задание 1')
 def list(numbers):
     result = 1
@@ -709,3 +710,26 @@ result = list(my_list, exponent)
 print(f"исходный список: {my_list}")
 print(f"степень: {exponent}")
 print(f"результат: {result}")
+'''
+
+import random
+lst = [random.randint(-10, 10) for _ in range(20)]
+print("исходный список:", lst)
+mid = len(lst) // 2
+left_sorted = sorted(lst[:mid])
+right_sorted = sorted(lst[mid:], reverse = True)
+result = left_sorted + right_sorted
+print("результат: ", result)
+
+#задание 2
+import random
+lst = [random.randint(-20, 20) for _ in range(45)]
+print("сходный список:", lst)
+size = len(lst) // 3
+p1, p2, p3 = lst[:size], lst[size:2*size], lst[2*size:]
+result = (
+    [x for x in p1 if x % 2 == 0] +
+    [max(p2) if i % 2 == 0 else min(p2) for i in range(len(p2))] +
+    [x for x in p3 if x % 2 != 0]
+)
+print("результат: ", result)
