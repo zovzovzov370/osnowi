@@ -710,7 +710,7 @@ result = list(my_list, exponent)
 print(f"исходный список: {my_list}")
 print(f"степень: {exponent}")
 print(f"результат: {result}")
-'''
+
 
 import random
 lst = [random.randint(-10, 10) for _ in range(20)]
@@ -733,3 +733,52 @@ result = (
     [x for x in p3 if x % 2 != 0]
 )
 print("результат: ", result)
+'''
+
+#задание 3
+print('задание 3')
+import random
+def insertion_sort_simple(arr):
+    iterations = 0
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] < key:
+            arr[j + 1] = arr[j]
+            j -= 1
+            iterations += 1
+        arr[j + 1] = key
+        iterations += 1
+    return iterations
+numbers = [random.randint(1, 100) for _ in range(15)]
+print("исходный: ", numbers)
+iterations = insertion_sort_simple(numbers)
+print("результат:", numbers)
+print("итераций: ", iterations)
+
+#задание 4
+print('задание 4')
+list = ["apple", "banana", "cherry", "date", "apricot"]
+print('исходной список:', list)
+sorted_list = sorted(list)
+print("отсортированный", sorted_list)
+
+#задание 5
+print('задание 5')
+def sort_fixed_compact(arr, k):
+    if k < 0 or k >= len(arr):
+        return arr
+    fixed = arr[k]
+    sorted_others = sorted(arr[:k] + arr[k + 1:])
+    return sorted_others[:k] + [fixed] + sorted_others[k:]
+test_cases = [
+    ([7, 2, 9, 1, 5, 3, 8], 2),
+    ([5, 3, 8, 1, 9], 1),
+    ([10, 20, 30, 40], 0),
+    ([1, 2, 3, 4, 5], 4)
+]
+for arr, k in test_cases:
+    result = sort_fixed_compact(arr, k)
+    print(f"массив: {arr}, k={k}")
+    print(f"результат: {result}")
+    print(f"фиксированный элемент: {arr[k]} остался на позиции {k}")
