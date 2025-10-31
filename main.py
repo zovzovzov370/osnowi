@@ -735,50 +735,136 @@ result = (
 print("результат: ", result)
 '''
 
-#задание 3
-print('задание 3')
-import random
-def insertion_sort_simple(arr):
-    iterations = 0
-    for i in range(1, len(arr)):
-        key = arr[i]
-        j = i - 1
-        while j >= 0 and arr[j] < key:
-            arr[j + 1] = arr[j]
-            j -= 1
-            iterations += 1
-        arr[j + 1] = key
-        iterations += 1
-    return iterations
-numbers = [random.randint(1, 100) for _ in range(15)]
-print("исходный: ", numbers)
-iterations = insertion_sort_simple(numbers)
-print("результат:", numbers)
-print("итераций: ", iterations)
+# #задание 3
+# print('задание 3')
+# import random
+# def insertion_sort_simple(arr):
+#     iterations = 0
+#     for i in range(1, len(arr)):
+#         key = arr[i]
+#         j = i - 1
+#         while j >= 0 and arr[j] < key:
+#             arr[j + 1] = arr[j]
+#             j -= 1
+#             iterations += 1
+#         arr[j + 1] = key
+#         iterations += 1
+#     return iterations
+# numbers = [random.randint(1, 100) for _ in range(15)]
+# print("исходный: ", numbers)
+# iterations = insertion_sort_simple(numbers)
+# print("результат:", numbers)
+# print("итераций: ", iterations)
+#
+# #задание 4
+# print('задание 4')
+# list = ["apple", "banana", "cherry", "date", "apricot"]
+# print('исходной список:', list)
+# sorted_list = sorted(list)
+# print("отсортированный", sorted_list)
+#
+# #задание 5
+# print('задание 5')
+# def sort_fixed_compact(arr, k):
+#     if k < 0 or k >= len(arr):
+#         return arr
+#     fixed = arr[k]
+#     sorted_others = sorted(arr[:k] + arr[k + 1:])
+#     return sorted_others[:k] + [fixed] + sorted_others[k:]
+# test_cases = [
+#     ([7, 2, 9, 1, 5, 3, 8], 2),
+#     ([5, 3, 8, 1, 9], 1),
+#     ([10, 20, 30, 40], 0),
+#     ([1, 2, 3, 4, 5], 4)
+# ]
+# for arr, k in test_cases:
+#     result = sort_fixed_compact(arr, k)
+#     print(f"массив: {arr}, k={k}")
+#     print(f"результат: {result}")
+#     print(f"фиксированный элемент: {arr[k]} остался на позиции {k}")
 
-#задание 4
-print('задание 4')
-list = ["apple", "banana", "cherry", "date", "apricot"]
-print('исходной список:', list)
-sorted_list = sorted(list)
-print("отсортированный", sorted_list)
+points_to_letters = {
+    1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'S', 'T', 'R', 'А', 'В', 'Е', 'И', 'Н', 'О', 'С', 'Т'],
+    2: ['D', 'G', 'Д', 'К', 'Л', 'М', 'П', 'У'],
+    3: ['B', 'C', 'M', 'P', 'Б', 'Г', 'Ё', 'Ь', 'Я'],
+    4: ['F', 'H', 'V', 'W', 'Y', 'Р', 'Й', 'Р' 'Ы'],
+    5: ['K', 'Ж', 'З', 'Ч', 'Ц'],
+    8: ['J', 'X', 'Ш', 'Э', 'Ю', 'Х' 'Х'],
+    10: ['Q', 'Z', 'Ф', 'Щ', 'Ъ']
+}
+gamers = {} #словарь игрока
+count_user = int(input("сколько человек будет играть?/:"))
+for i in range(count_user):
+    name = input("введите имя игрока:")
+    gamers[name] = 0
+print(f"писок игроков: \n{gamers}")
+# result = 0
+# 10 раундов
+for raund in range(10):
+    for gamer in gamers.keys():
+        print("*"*11)
+        print(f"ходит игрок {gamer}")
+        answer = input("введите слово:")
+        for i in answer:
+            for key, value in dictionnary.items():
+                if i in value:
+                    gamers[gamer] += key
+print("игра окончена! \n таблица игроков:")
+for key, value in dictionnary.items():
+    print(f"{key} -> {value} баллов")
+result_user = ' '
+result_user = ' '
+for key, value in gamers.items():
+    if result_value < value:
+        result_value = value
+        result_user = key
+print(f"победитель: {result_user}")
+from sys import intern
 
-#задание 5
-print('задание 5')
-def sort_fixed_compact(arr, k):
-    if k < 0 or k >= len(arr):
-        return arr
-    fixed = arr[k]
-    sorted_others = sorted(arr[:k] + arr[k + 1:])
-    return sorted_others[:k] + [fixed] + sorted_others[k:]
-test_cases = [
-    ([7, 2, 9, 1, 5, 3, 8], 2),
-    ([5, 3, 8, 1, 9], 1),
-    ([10, 20, 30, 40], 0),
-    ([1, 2, 3, 4, 5], 4)
-]
-for arr, k in test_cases:
-    result = sort_fixed_compact(arr, k)
-    print(f"массив: {arr}, k={k}")
-    print(f"результат: {result}")
-    print(f"фиксированный элемент: {arr[k]} остался на позиции {k}")
+backpack = {'зажигалка':20, 'компас':100, 'фрукты':500, 'рубашка':300,
+            'термос':1000, 'аптечка':200, 'куртка':600, 'бинокль':400,
+            'удочка':1300, 'салфетки':40, 'бутерброды':800, 'палатка':5500,
+            'спальный мешок':2500, 'изолента':250, 'котел':3000
+}
+max_mass = int(input("введитемаксимальный вес для похода:"))
+inter_mass = 0
+while iner_mass < max_mass:
+    print(backpack)
+    answer = input("что вы хотите взять с собой:")
+    for key, value in backpack.items():
+        if key == answer:
+            iner_mass += backpack[key]
+print(f"рюкзак заполнен, текущая масса:{iner_mass}")
+
+note_book = {
+    "Маша": {
+        'tel': '+7922123561',
+        'vk': 'vk.com/masha321',
+        'youtube': 'youtube.com/masha321',
+        'telegram': 't.me/masha321'
+    },
+    "Паша": {
+        'tel': '+7922123562',
+        'vk': 'vk.com/pasha123',
+        'youtube': 'youtube.com/pasha123',
+        'telegram': 't.me/pasha123'
+    },
+    "Саша": {
+        'tel': '+7922123563',
+        'vk': 'vk.com/sasha456',
+        'youtube': 'youtube.com/sasha456',
+        'telegram': 't.me/sasha456'
+    }
+}
+print("доступные контакты:", ", ".join(note_book.keys()))
+
+# Запрашиваем имя для поиска
+user_search = input("введите имя из списка контактов: ").capitalize()
+
+# Проверяем, есть ли контакт в книге и выводим информацию
+if user_search in note_book:
+    print(f"\nинформация о контакте {user_search}:")
+    for key, value in note_book[user_search].items():
+        print(f"{key}: {value}")
+else:
+    print(f"контакт '{user_search}' не найден в телефонной книге.")
