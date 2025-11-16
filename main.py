@@ -869,41 +869,318 @@ print("результат: ", result)
 # else:
 #     print(f"контакт '{user_search}' не найден в телефонной книге.")
 
-print('задание 1')
-print('"Don`t compare yourself with anyone in this world...if you do so, you are insulting\n'
-      'yourself."\n'
-      '\n'
-      'Bill Gates')
+# print('задание 1')
+# print('"Don`t compare yourself with anyone in this world...if you do so, you are insulting\n'
+#       'yourself."\n'
+#       '\n'
+#       'Bill Gates')
+#
+# print('задание 2')
+#
+# def get_even_numbers(num1, num2):
+#     start = min(num1, num2)
+#     end = max(num1, num2)
+#     even_numbers = []
+#     for number in range(start, end + 1):
+#         if number % 2 == 0:
+#             even_numbers.append(number)
+#     return even_numbers
+# result = get_even_numbers(3, 12)
+# print(f"четные числа: {result}")
+#
+# print('задание 3')
+#
+# def xz(side_length, symbol, is_filled):
+#     for row in range(side_length):
+#         line = ""
+#         for col in range(side_length):
+#             if is_filled:
+#                 line += symbol + " "
+#             else:
+#                 if row == 0 or row == side_length - 1 or col == 0 or col == side_length - 1:
+#                     line += symbol + " "
+#                 else:
+#                     line += "  "
+#         print(line)
+# print("заполненный квадрат 6x6:")
+# xz(6, '#', True)
+#
+# print("\nпустой квадрат 6x6:")
+# xz(6, '#', False)
 
-print('задание 2')
+#ксперимент монте-карло
+# import datetime
+# from random import randint
+# def getbirthday(number0fBirthdays):
+#     birthdays = [] #писок дней рождений
+#     for i in range(number0fBirthdays):
+#                 # год в нашей имитации роли не играет,
+#         # лишь бы в объектах дней рождения он был однаков
+#         start0Year = datetime.date(2000, 1, 1)
+#         # случайный день года
+#         randomNumber0fDays = datetime.timedelta(randint(0, 364))
+#         birthday = start0Year + randomNumber0fDays +randomNumber0fDays
+#         birthdays.append(birthday) #добавляем в список
+#     return birthdays
+#
+# '''
+# принимает список дней рождений. обрабатывает его и возвращает совпадения в
+# датах, которые встречаются несколько раз
+# '''
+# def getMatch(birtdays):
+#     if len(birtdays) == len(set(birtdays)):
+#         return None # даты не совпадают, выходим из программы
+#     for a, birthdayA in enumerate(birtdays):
+#         for b, birthdayB in enumerate(birtdays[a+1 : ]):
+#             if birthdayA == birthdayB:
+#                 return birthdayA # даты совпали
+# # MAIN
+# def main():
+#     # кортедж месяцев в году
+#     Months = ('Jan' , 'Feb' , 'Mar' , 'Apr' , 'May' , "Jun" ,
+#               "Jul" , "Aug" , "Sep" , "Oct" , "Nov" , "Dec")
+#     print("Добро пожаловать в приложение для симуляции совпадения "
+#           "дат рождения")
+#     while True: #апрашвает данные, пока пользователь
+#         # не введет допустиые значения
+#         print("сколько симуляций вы хотите сделать \n P.S. max = 100")
+#         response = input("--->")
+#         if response. isdecimal() and 0 < int(response) <= 100:
+#             numBDdays = int(response)
+#             break
+#     print()
+#     #генерируем и отображаем дни рождения
+#     birthdays = getbirthday(numBDdays)
+#     for i, birthday in enumerate(birthdays):
+#         if i != 0:
+#             print(", ", end="")
+#         months = Months[birthday.month - 1]
+#         dateText = "{} {}".format(months, birthday.day)
+#         print(dateText, end="")
+#     print()
+#     print()
+#     print(f"генерация {numBDdays} лучайных симуляций")
+#     input("для продолжения введите Enter...")
+#     print("запуск 100.000 симуляций")
+#     simMatch = 0
+#     for i in range(100_000):
+#         if i % 100 == 0:
+#             print(i, "запущена симуляция...")
+#         birthdays = getMatch(birthdays)
+#         if getMatch(birthdays) != None:
+#             simMatch += 1
+#     print("было выполнено 100.000 симуляций.")
+#     probability = round (simMatch / 100 * 100, 2)
+#     print("процент попадения",probability, "%")
+#     print("количество дат для иследования:" ,numBDdays)
+#     print("количество циклов симуляции:",simMatch)
+#
+# if name == '__main__':
+#     main()
 
-def get_even_numbers(num1, num2):
-    start = min(num1, num2)
-    end = max(num1, num2)
-    even_numbers = []
-    for number in range(start, end + 1):
-        if number % 2 == 0:
-            even_numbers.append(number)
-    return even_numbers
-result = get_even_numbers(3, 12)
-print(f"четные числа: {result}")
 
-print('задание 3')
+# import pygame
+# import random
+# from py2048_classes import Board
+# # Создание списка клавиш для игр. прггресса
+# from pygame.locals import(
+#     K_UP,
+#     K_DOWN,
+#     K_LEFT,
+#     K_RIGHT,
+#     K_ESCAPE,
+#     KEYDOWN,
+#     QUIT,
+# )
 
-def xz(side_length, symbol, is_filled):
-    for row in range(side_length):
-        line = ""
-        for col in range(side_length):
-            if is_filled:
-                line += symbol + " "
-            else:
-                if row == 0 or row == side_length - 1 or col == 0 or col == side_length - 1:
-                    line += symbol + " "
-                else:
-                    line += "  "
-        print(line)
-print("заполненный квадрат 6x6:")
-xz(6, '#', True)
+# # Задаем цвета для игровых полей
+# TEXT_DARK = pygame.Color(119, 110, 100)
+# TEXT_LIGHT = pygame.Color(255, 255, 255)
+# BACKGROUND = pygame.Color(188, 173, 159)
+# EMPTY = pygame.Color(206, 192, 179)
+# TILE_MAX = pygame.Color(18, 91, 146)
+#
+# # Задаем цвета для текста
+# CELL_STYLES = {
+# 0: {"font": TEXT_DARK, "fill": EMPTY},
+# 1: {"font": TEXT_DARK, "fill": pygame.Color(239, 229, 218)},
+# 2: {"font": TEXT_DARK, "fill": pygame.Color (238, 225, 199)},
+# 3: {"font": TEXT_LIGHT, "fill": pygame.Color(242, 177, 121)},
+# 4: {"font": TEXT_LIGHT, "fill": pygame.Color(245, 149, 99)},
+# 5: {"font": TEXT_LIGHT, "fill": pygame.Color(247, 127, 96)},
+# 6: {"font": TEXT_LIGHT, "fill": pygame.Color(246, 94, 59)},
+# 7: {"font": TEXT_LIGHT, "fill": pygame.Color(241, 219, 147)},
+# 8: {"font": TEXT_LIGHT, "fill": pygame.Color(237, 204, 97)},
+# 9: {"font": TEXT_LIGHT, "fill": pygame.Color(235, 193, 57)},
+# 10: {"font": TEXT_LIGHT, "fill": pygame.Color(231, 181, 23)},
+# 11: {"font": TEXT_DARK, "fill": pygame.Color(192, 154, 16)},
+# 12: {"font": TEXT_LIGHT, "fill": pygame.Color(94, 218, 146)},
+# 13: {"font": TEXT_LIGHT, "fill": pygame.Color(37, 187, 100)},
+# 14: {"font": TEXT_LIGHT, "fil1": pygame.Color (55, 148, 81)},
+# 15: {"font": TEXT_LIGHT, "fill": pygame.Color(113, 180, 213)},
+# 16: {"font": TEXT_LIGHT, "fill": pygame.Color(25, 130, 205)},
+# }
+# BORDER_WIDTH = 10
+# TILE_SIZE = 100
+# NUMBER_OF_ROWS = NUMBER_OF_COLUMNS = 4
+# SCREEN_WIDTH = SCREEN_HEIGHT = ((NUMBER_OF_ROWS+1)*BORDER_WIDTH) + (NUMBER_OF_COLUMNS*TILE_SIZE)
+# FONT_SIZE = 24
+# class Tile(pygame.sprite.Sprite):
+#     def __init__(self, row, collumn, value=None):
+#         super(Tile, self).__init__()
+#         self.font =pygame.font.Font(pygame.font.get_default_font(), FONT_SIZE)
+#         self.x_pos = BORDER_WIDTH + (row * (BORDER_WIDTH + TILE_SIZE))
+#         self.y_pos = BORDER_WIDTH + (collumn * (BORDER_WIDTH + TILE_SIZE))
+#         self.surface = pygame.Surface((TILE_SIZE, TILE_SIZE))
+#         self.value = value
+#         self.update(value)
+#
+#     def update(self, value):
+#         self.change_fill(value)
+#         self.change_text(value)
+#         self.value = value
+#
+#     def change_fill(self, value):
+#         if value:
+#             if value in CELL_STYLES:
+#                 fill_colour = CELL_STYLES[value]["fill"]
+#             else:
+#                 fill_colour = TILE_MAX
+#         else:
+#             fill_colour = EMPTY
+#         self.surface.fill(fill_colour)
+#
+#     def change_text(self, value):
+#         if value:
+#             if value in CELL_STYLES:
+#                 text_colour = CELL_STYLES[value]["font"]
+#             else:
+#                 text_colour = TEXT_LIGHT
+#             text_surface = self.font.render(str(2**value), True, text_colour, None)
+#             text_rectangle = text_surface.get_rect(center=(TILE_SIZE/2, TILE_SIZE/2))
+#             self.surface.blit(text_surface, text_rectangle)
+#
+#
+# class Game:
+#     def __init__(self):
+#         self.all_tiles = pygame.sprite.Group()
+#         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+#         self.screen.fill(BACKGROUND)
+#         self.tiles = self.initialise_tiles
+#         self.draw_tiles()
+#
+#     def initialise_tiles(self):
+#         tiles = []
+#         for row in range(NUMBER_OF_ROWS):
+#             row_of_tiles = []
+#             for column in range(0, NUMBER_OF_COLUMNS):
+#                 tile = Tile(row, column)
+#                 row_of_tiles.append(tile)
+#                 self.all_tiles.add(tile)
+#             tiles.append(row_of_tiles)
+#         return tiles
+#
+#     def draw_tiles(self):
+#         for tile in self.all_tiles:
+#             self.screen.blit(tile.surface, (tile.x_pos, tile.y_pos))
+#
+#             def update_tiles(self, tile_values):
+#                 for row in range(0, NUMBER_OF_ROWS):
+#                     for column in range(0, NUMBER_OF_COLUMNS):
+#                         self.tiles[row][column].update(tile_values[row][column])
+#
+#             @staticmethod
+#             def convert_grid(grid):
+#                 tile_values = []
+#                 for row in range(0, NUMBER_OF_ROWS):
+#                     row_of_tiles = []
+#                     for column in range(0, NUMBER_OF_COLUMNS):
+#                         if grid[row][column]:
+#                             row_of_tiles.append(grid[row][column].get_value())
+#                         else:
+#                             row_of_tiles.append(None)
+#                     tile_values.append(row_of_tiles)
+#                 return tile_values
+#
+#         def main():
+#             pygame.init()
+#             game = Game()
+#             board = Board()
+#             board.add_random_tiles(2)
+#             game.update_tiles(Game.convert_grid(board.grid))
+#             game.draw_tiles()
+#             pygame.display.flip()
+#
+#             move_counter = 0
+#             move = None
+#             move_result = False
+#             running = True
+#             while running:
+#                 for event in pygame.event.get():
+#                     if event.type == pygame.KEYDOWN:
+#                         if event.key == pygame.K_ESCAPE:
+#                             running = False
+#                         else:
+#                             if event.type == K_UP:
+#                                 move = "UP"
+#                             elif event.type == K_DOWN:
+#                                 move = "DOWN"
+#                             elif event.type == K_LEFT:
+#                                 move = "LEFT"
+#                             elif event.type == K_RIGHT:
+#                                 move = "RIGHT"
+#                             else:
+#                                 move = None
+#                             if move is not None:
+#                                 move_result = board.make_move(move)
+#                                 if move_result:
+#                                     add_tile_result = board.add_random_tiles(1)
+#                                     move_counter += 1
+#                                     game.update_tiles(Game.convert_grid(board.grid))
+#                                     game.draw_tiles()
+#                                     pygame.display.flip()
+#                     elif event.type == pygame.QUIT:
+#                         running = False
+#
+#         if __name__ == "__main__":
+#             main()
 
-print("\nпустой квадрат 6x6:")
-xz(6, '#', False)
+# Выполнил: студент группы АГДСЭ-19 Иванов А.А.
+# Лабораторная №4, вариант №31
+#
+
+# import math
+#
+# # процедура позволяет работать с вещественными числами
+# def frange(start, stop, step):
+#     i = start
+#     while i < stop:
+#         yield i
+#         i += step
+#
+# # 1. создаем значения аргумента x и функций y1 и y2 по формулам
+# x = [i for i in frange(-1.4, 0.2, 1.4)]
+# y1 = [(2 + math.sin(i)**2) / (1 + i * i) for i in x]
+# y2 = [2 + (4 * math.cos(i)) / (1 + math.exp(i)) for i in x]
+#
+# # 2. создание файла data.txt для записи полученных данных в столбцы
+#
+# filename = r'c:\LR Python\data.txt'
+# with open(filename, 'w') as outfile:
+#     outfile.write('# значения x , y1  и y2\n')
+#     for xi, y1i, y2i in zip(x, y1, y2):
+#         outfile.write('%10.5f %10.5f %10.5f\n' % (xi, y1i, y2i))
+# outfile.close()
+#
+# # 3. находим сумму функций s = y1 + y2
+#
+# result = map(lambda i1, i2: i1 + i2, y1, y2)
+# y = list(result)
+#
+# # 4. Добавление результата x и s в файл data.txt из двух колонок
+#
+# with open(filename, 'a') as outfile:
+#     outfile.write('# Результат задания x и s\n')
+#     for xi, yi in zip(x, y):
+#         outfile.write('%10.5f %10.5f\n' % (xi, yi))
+# outfile.close()
