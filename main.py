@@ -1150,6 +1150,7 @@ print("результат: ", result)
 #
 
 # import math
+# import os
 #
 # # процедура позволяет работать с вещественными числами
 # def frange(start, stop, step):
@@ -1157,30 +1158,156 @@ print("результат: ", result)
 #     while i < stop:
 #         yield i
 #         i += step
-#
-# # 1. создаем значения аргумента x и функций y1 и y2 по формулам
-# x = [i for i in frange(-1.4, 0.2, 1.4)]
+
+# 1. создаем значения аргумента x и функций y1 и y2 по формулам
+# x = [i for i in frange(-6.0, 7.0, 1.0)]
 # y1 = [(2 + math.sin(i)**2) / (1 + i * i) for i in x]
 # y2 = [2 + (4 * math.cos(i)) / (1 + math.exp(i)) for i in x]
 #
-# # 2. создание файла data.txt для записи полученных данных в столбцы
-#
-# filename = r'c:\LR Python\data.txt'
-# with open(filename, 'w') as outfile:
+# # 2. корректный путь к файлу
+# # вариант 1: относительный путь (файл будет рядом со скриптом)
+# filename = 'data.txt'
+
+# вариант 2: абсолютный путь под Windows (если у тебя реально есть такая папка)
+# filename = r'C:\LR Python\data.txt'
+
+# создаём папку, если используешь вариант с абсолютным путём
+# os.makedirs(r'C:\LR Python', exist_ok=True)
+
+# запись x, y1, y2
+# with open(filename, 'w', encoding='utf-8') as outfile:
 #     outfile.write('# значения x , y1  и y2\n')
 #     for xi, y1i, y2i in zip(x, y1, y2):
 #         outfile.write('%10.5f %10.5f %10.5f\n' % (xi, y1i, y2i))
-# outfile.close()
 #
 # # 3. находим сумму функций s = y1 + y2
-#
 # result = map(lambda i1, i2: i1 + i2, y1, y2)
 # y = list(result)
 #
-# # 4. Добавление результата x и s в файл data.txt из двух колонок
-#
-# with open(filename, 'a') as outfile:
+# # 4. добавление результата x и s в файл (две колонки)
+# with open(filename, 'a', encoding='utf-8') as outfile:
 #     outfile.write('# Результат задания x и s\n')
-#     for xi, yi in zip(x, y):
-#         outfile.write('%10.5f %10.5f\n' % (xi, yi))
-# outfile.close()
+#     for xi, si in zip(x, y):
+#         outfile.write('%10.5f %10.5f\n' % (xi, si))
+
+import random
+class Number:
+    def init(self, numbers=None, **kwargs):
+        if numbers is not None:
+            self.numbers = numbers
+        else:
+            size = kwargs.get('size', 10)  # По умолчанию размер 10
+            self.numbers = [random.randint(-50, 50) for _ in range(size)]
+    def process_list(self):
+        n = len(self.numbers)
+        avg = sum(self.numbers) / n
+        print(f"среднее арифметическое: {avg:.2f}")
+        if avg > 0:
+            sort_end = int(2 * n / 3)
+            print(f"среднее > 0 -> сортируем первые {sort_end} элементов")
+            self.numbers[:sort_end] = sorted(self.numbers[:sort_end])
+            self.numbers[sort_end:] = self.numbers[sort_end:][::-1]
+        else:
+            sort_end = int(n / 3)
+            print(f"среднее <= 0 -> сортируем первые {sort_end} элементов")
+            self.numbers[:sort_end] = sorted(self.numbers[:sort_end])
+            self.numbers[sort_end:] = self.numbers[sort_end:][::-1]
+        return self.numbers
+    def display(self):
+        print("список:", self.numbers)
+        print("длина списка:", len(self.numbers))
+print("задание 1")
+print("тест 1 случайные числа:")
+num_obj1 = Number(size=12)
+print("исходный список:")
+num_obj1.display()
+result1 = num_obj1.process_list()
+print("после обработки:")
+num_obj1.display()
+
+
+class Student:
+    def init(self):
+        self.grades = []
+    def menu(self):
+        while True:
+            print("\n=== ДНЕВНИК СТУДЕНТА ===")
+            print("1. Ввести 10 оценок")
+            print("2. Показать все оценки")
+            print("3. Изменить оценку")
+            print("4. Проверить стипендию")
+            print("5. Сортировать оценки")
+            print("0. Выход")
+            choice = input("Ваш выбор: ")
+            if choice == '1':
+                self.input_grades()
+            elif choice == '2':
+                self.show_grades()
+            elif choice == '3':
+                self.change_grade()
+            elif choice == '4':
+                self.check_scholarship()
+            elif choice == '5':
+                self.sort_grades()
+            elif choice == '0':
+                print("Выход!")
+                break
+    def input_grades(self):
+        self.grades = []
+        for i in range(10):
+            grade = int(input(f"Оценка {i + 1}: "))
+            if 1 <= grade <= 12:
+                self.grades.append(grade)
+            else:
+                print("Ошибка! Оценка 1-12")
+                return
+    def show_grades(self):
+        if self.grades:
+            for i, g in enumerate(self.grades, 1):
+                print(f"{i}. {g}")
+        else:
+            print("Нет оценок!")
+    def change_grade(self):
+        if not self.grades:
+            print("Сначала введите оценки!")
+            return
+        self.show_grades()
+        num = int(input("Какую оценку изменить? ")) - 1
+        new_grade = int(input("Новая оценка: "))
+        if 0 <= num < len(self.grades) and 1 <= new_grade <= 12:
+            self.grades[num] = new_grade
+            print("Изменено!")
+    def check_scholarship(self):
+        if not self.grades:
+            print("Нет оценок!")
+            return
+        avg = sum(self.grades) / len(self.grades)
+        print(f"Средний балл: {avg:.2f}")
+        print("Стипендия: ДА" if avg >= 10.7 else "Стипендия: НЕТ")
+    def sort_grades(self):
+        if not self.grades:
+            print("Нет оценок!")
+            return
+        choice = input("Сортировать по возрастанию (1) или убыванию (2)? ")
+        if choice == '1':
+            print(sorted(self.grades))
+        elif choice == '2':
+            print(sorted(self.grades, reverse=True))
+student = Student()
+student.menu()
+
+
+numbers = [5, 2, 8, 1, 9, 3]
+print("Исходный список:", numbers)
+n = len(numbers)
+for i in range(n - 1):
+    swaps = 0
+    for j in range(n - 1 - i):
+        if numbers[j] > numbers[j + 1]:
+            numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
+            swaps += 1
+    print(f"Проход {i + 1}: {numbers}, перестановок: {swaps}")
+    if swaps == 0:
+        print("Сортировка завершена!")
+        break
+print("Результат:", numbers)
