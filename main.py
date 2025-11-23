@@ -1360,7 +1360,7 @@ def books_catalog():
         print("3 вывести список книг с названиями и годами выпуска")
         print("4 добавить книгу")
         print("5 выход")
-        choice = input("выберите пункт меню:")
+        choice = input("выбери пункт меню:")
         if choice == '1':
             if titles and years:
                 combined = sorted(zip(titles, years), key=lambda x: x[0])
@@ -1378,15 +1378,15 @@ def books_catalog():
         elif choice == '3':
             if titles and years:
                 print("\nкаталог книг:")
-                print("название\tГод выпуска")
+                print("название\tгод выпуска")
                 for title, year in zip(titles, years):
                     print(f"{title}\t{year}")
             else:
-                print("каталог пуст, добавьте книги")
+                print("каталог пуст, добавь книги")
         elif choice == '4':
-            title = input("введите название книги:")
+            title = input("введи название книги:")
             try:
-                year = int(input("введите год выпуска: "))
+                year = int(input("введи год выпуска: "))
                 titles.append(title)
                 years.append(year)
                 print(f"книга '{title}' добавлена в каталог")
