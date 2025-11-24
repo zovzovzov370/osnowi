@@ -1313,88 +1313,191 @@ print("результат: ", result)
 # print("Результат:", numbers)
 
 
-def phone_directory():
-    codes = [111234,234567,456345,18769,141141]
-    phones = [791925334,78172833,74553732,79123433,7141141]
-    while True:
-        print("1 отсортировать по идентификационным кодам")
-        print("2 отсортировать по номерам телефона")
-        print("3 вывести список с кодами и телефонами")
-        print("4 выход")
-        choice = input("выберите пункт меню:")
-        if choice == '1':
-            if codes and phones:
-                combined = sorted(zip(codes, phones), key=lambda x: x[0])
-                codes[:], phones[:] = zip(*combined)
-                print("список отсортирован по идентификационным кодам")
-            else:
-                print("списки пусты")
-        elif choice == '2':
-            if codes and phones:
-                combined = sorted(zip(codes, phones), key=lambda x: x[1])
-                codes[:], phones[:] = zip(*combined)
-                print("список отсортирован по номерам телефона")
-            else:
-                print("списки пусты")
-        elif choice == '3':
-            if codes and phones:
-                print("\nсписок пользователей:")
-                print("код\tтелефон")
-                for code, phone in zip(codes, phones):
-                    print(f"{code}\t{phone}")
-            else:
-                print("списки пусты, добавьте данные")
-        elif choice == '4':
-            print("выход")
-            break
-        else:
-            print("ошибка")
+# def phone_directory():
+#     codes = [111234,234567,456345,18769,141141]
+#     phones = [791925334,78172833,74553732,79123433,7141141]
+#     while True:
+#         print("1 отсортировать по идентификационным кодам")
+#         print("2 отсортировать по номерам телефона")
+#         print("3 вывести список с кодами и телефонами")
+#         print("4 выход")
+#         choice = input("выберите пункт меню:")
+#         if choice == '1':
+#             if codes and phones:
+#                 combined = sorted(zip(codes, phones), key=lambda x: x[0])
+#                 codes[:], phones[:] = zip(*combined)
+#                 print("список отсортирован по идентификационным кодам")
+#             else:
+#                 print("списки пусты")
+#         elif choice == '2':
+#             if codes and phones:
+#                 combined = sorted(zip(codes, phones), key=lambda x: x[1])
+#                 codes[:], phones[:] = zip(*combined)
+#                 print("список отсортирован по номерам телефона")
+#             else:
+#                 print("списки пусты")
+#         elif choice == '3':
+#             if codes and phones:
+#                 print("\nсписок пользователей:")
+#                 print("код\tтелефон")
+#                 for code, phone in zip(codes, phones):
+#                     print(f"{code}\t{phone}")
+#             else:
+#                 print("списки пусты, добавьте данные")
+#         elif choice == '4':
+#             print("выход")
+#             break
+#         else:
+#             print("ошибка")
+#
+# phone_directory()
+# def books_catalog():
+#     titles = []
+#     years = []
+#     while True:
+#         print("1 отсортировать по названию книг")
+#         print("2 отсортировать по годам выпуска")
+#         print("3 вывести список книг с названиями и годами выпуска")
+#         print("4 добавить книгу")
+#         print("5 выход")
+#         choice = input("выбери пункт меню:")
+#         if choice == '1':
+#             if titles and years:
+#                 combined = sorted(zip(titles, years), key=lambda x: x[0])
+#                 titles[:], years[:] = zip(*combined)
+#                 print("список отсортирован по названиям книг")
+#             else:
+#                 print("каталог пуст")
+#         elif choice == '2':
+#             if titles and years:
+#                 combined = sorted(zip(titles, years), key=lambda x: x[1])
+#                 titles[:], years[:] = zip(*combined)
+#                 print("список отсортирован по годам выпуска")
+#             else:
+#                 print("каталог пуст")
+#         elif choice == '3':
+#             if titles and years:
+#                 print("\nкаталог книг:")
+#                 print("название\tгод выпуска")
+#                 for title, year in zip(titles, years):
+#                     print(f"{title}\t{year}")
+#             else:
+#                 print("каталог пуст, добавь книги")
+#         elif choice == '4':
+#             title = input("введи название книги:")
+#             try:
+#                 year = int(input("введи год выпуска: "))
+#                 titles.append(title)
+#                 years.append(year)
+#                 print(f"книга '{title}' добавлена в каталог")
+#             except ValueError:
+#                 print("год должен быть числом")
+#         elif choice == '5':
+#             print("выход из программы")
+#             break
+#         else:
+#             print("ошибка")
+# books_catalog()
 
-phone_directory()
-def books_catalog():
-    titles = []
-    years = []
+def linearsearch(arr, target):
+    for i, value in enumerate(arr):
+        if value == target:
+            return i
+    return -1
+def xz():
+    list1 = [5,2,8,1,9]
+    list2 = [4,7,2,6,4]
+    list3 = [10,15,12,11]
+    list4 = [22,18,16,14,13]
+    print("список 1:", list1)
+    print("список 2:", list2)
+    print("список 3:", list3)
+    print("список 4:", list4)
+    combined_list = list1 + list2 + list3 + list4
+    print("\nобъединенный список:", combined_list)
     while True:
-        print("1 отсортировать по названию книг")
-        print("2 отсортировать по годам выпуска")
-        print("3 вывести список книг с названиями и годами выпуска")
-        print("4 добавить книгу")
-        print("5 выход")
-        choice = input("выбери пункт меню:")
-        if choice == '1':
-            if titles and years:
-                combined = sorted(zip(titles, years), key=lambda x: x[0])
-                titles[:], years[:] = zip(*combined)
-                print("список отсортирован по названиям книг")
-            else:
-                print("каталог пуст")
-        elif choice == '2':
-            if titles and years:
-                combined = sorted(zip(titles, years), key=lambda x: x[1])
-                titles[:], years[:] = zip(*combined)
-                print("список отсортирован по годам выпуска")
-            else:
-                print("каталог пуст")
-        elif choice == '3':
-            if titles and years:
-                print("\nкаталог книг:")
-                print("название\tгод выпуска")
-                for title, year in zip(titles, years):
-                    print(f"{title}\t{year}")
-            else:
-                print("каталог пуст, добавь книги")
-        elif choice == '4':
-            title = input("введи название книги:")
-            try:
-                year = int(input("введи год выпуска: "))
-                titles.append(title)
-                years.append(year)
-                print(f"книга '{title}' добавлена в каталог")
-            except ValueError:
-                print("год должен быть числом")
-        elif choice == '5':
-            print("выход из программы")
+        order = input("\nвыберите сортировку 1 по возрастанию, 2 по убыванию: ")
+        if order in ['1', '2']:
             break
+        print("выберете 1 или 2")
+    if order == '1':
+        combined_list.sort()
+        print("отсортировано по возрастанию:", combined_list)
+    else:
+        combined_list.sort(reverse=True)
+        print("отсортировано по убыванию:", combined_list)
+    try:
+        search_value = int(input("\nвведите значение для поиска: "))
+        index = linearsearch(combined_list, search_value)
+        if index != -1:
+            print(f"значение {search_value} найдено на позиции {index + 1}")
         else:
-            print("ошибка")
-books_catalog()
+            print(f"значение {search_value} не найдено в списке")
+    except ValueError:
+        print("ошибка")
+xz()
+
+
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+def get_unique_elements(*lists):
+    all_elements = []
+    for lst in lists:
+        all_elements.extend(lst)
+    unique_elements = []
+    for element in all_elements:
+        if all_elements.count(element) == 1:
+            unique_elements.append(element)
+    return unique_elements
+def xz2():
+    list1 = [5, 2, 8, 1, 9, 100]
+    list2 = [3, 7, 2, 6, 4, 100]
+    list3 = [10, 15, 12, 11, 200]
+    list4 = [20, 18, 16, 14, 13, 300]
+    print("список 1:", list1)
+    print("список 2:", list2)
+    print("список 3:", list3)
+    print("список 4:", list4)
+    unique_list = get_unique_elements(list1, list2, list3, list4)
+    print("\nуникальные элементы:", unique_list)
+    if not unique_list:
+        print("нет уникальных элементов")
+        return
+    while True:
+        order = input("\nвыберите сортировку 1 по возрастанию, 2 по убыванию: ")
+        if order in ['1', '2']:
+            break
+        print("введите 1 или 2")
+    if order == '1':
+        unique_list.sort()
+        print("отсортировано по возрастанию:", unique_list)
+    else:
+        unique_list.sort(reverse=True)
+        print("отсортировано по убыванию:", unique_list)
+    try:
+        search_value = int(input("\nвведите значение для поиска: "))
+        search_list = unique_list.copy()
+        if order == '2':
+            search_list.sort()
+        index = binary_search(search_list, search_value)
+        if index != -1:
+            if order == '1':
+                actual_index = index
+            else:
+                actual_index = len(unique_list) - 1 - index
+            print(f"значение {search_value} найдено на позиции {actual_index + 1}")
+            print(f"список: {unique_list}")
+        else:
+            print(f"значение {search_value} не найдено")
+    except ValueError:
+        print("ошибка")
+xz2()
