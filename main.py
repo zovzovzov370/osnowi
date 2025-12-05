@@ -1502,180 +1502,565 @@ print("результат: ", result)
 #         print("ошибка")
 # xz2()
 
-import random
-import sys
+# import random
+# import sys
+#
+# HEARTS = chr(9827)
+# DIAMONDS = chr(9830)
+# SPADES = chr(9824)
+# CLUBS = chr(9827)
+# BACKSIDE = 'backside'
+# '''
+# black jack - классическая карточ игра
+# измевстаня как 21. В Этой версии нет
+# страхования и разбиения очков
+# '''
+#
+# def main():
+#     print('''
+#     Правила игры: \n
+#     Постаратейсь набрать макс близкое \n
+#     к 21 число, не привышая его. \n
+#     Короли, дамы, валеты приносят по 10 очков. \n
+#     Тузы приносят 1 или 11 очков. \n
+#     Карты от 2 до 10 приносят свой номинал. \n
+#     (H)it, чтоб взять карту. \n
+#     (S)stand, чтоб прекратить брать карты. \n
+#     (D)abell, чтоб удвоить вставку при первой игре. \n
+#     В случае нечьи ставка возвращается к игроку \n
+#     Диллер прекращает тратить карты на 17 очках \n
+#     ''')
+#     money = 5000
+#     while True:
+#         if money <= 0:
+#             print('''
+#             Ты проиграл, у тебя закончились кредиты.
+#             ''')
+#             sys.exit()
+#         print(f"Кредиты: {money}")
+#         bet = get_bet(money)
+#         deck = get_deck()
+#         dealer_hand = [deck.pop(), deck.pop()]
+#         player_hand = [deck.pop(), deck.pop()]
+#         print(f"Ставка: {bet}")
+#         while True:
+#             display_hands(player_hand, dealer_hand, False)
+#             print()
+#             if get_hand_value(player_hand) > 21:
+#                 break
+#             move = get_move(player_hand, money - bet)
+#             if move == 'D':
+#                 additional_bet = get_bet(min(bet, (money - bet)))
+#                 bet += additional_bet
+#                 print(f"Ставка изменилась => {bet}")
+#             if move in ("H", "D"):
+#                 new_card = deck.pop()
+#                 rank, suit = new_card
+#                 print(f"выпала карта {rank} номиналом {suit}")
+#                 player_hand.append(new_card)
+#                 if get_hand_value(player_hand) > 21:
+#                     continue
+#             if move in ("S", "N", "D"):
+#                 break
+#         if get_hand_value(player_hand) <= 21:
+#             while get_hand_value(dealer_hand) < 17:
+#                 print("Диллер берет карту")
+#                 dealer_hand.append(deck.pop())
+#                 display_hands(player_hand, dealer_hand, False)
+#                 if get_hand_value(dealer_hand) > 21:
+#                     break
+#                 input("для продолжения нажмите enter...")
+#                 print("\n\n")
+#         display_hands(player_hand, dealer_hand, True)
+#         player_value = get_hand_value(player_hand)
+#         dealer_value =  get_hand_value(dealer_hand)
+#         if dealer_value > 21:
+#             print(f"Диллер перебрал, выйграл ставку {bet}")
+#             money += bet
+#         elif player_value > 21 or player_value < dealer_value:
+#             print("Ты проиграл!")
+#             money -= bet
+#         elif player_value > dealer_value:
+#             print("Ты победил")
+#             money += bet
+#         elif player_value == dealer_value:
+#             print("Ничья, победителя нету")
+#         input("для продолжения нажмите enter...")
+#
+# def get_bet(max_bet):
+#     while True:
+#         bet = input(f"Сколько хотите поставить от 1-{max_bet} \n"
+#                     "Ваш выбор").upper().strip()
+#         if bet == "QUIT":
+#             print("Выход")
+#             sys.exit()
+#         if not bet.isdecimal():
+#             continue
+#         bet = int(bet)
+#         if 1 <= bet <= max_bet:
+#             return bet
+#
+# def get_deck():
+#     deck = []
+#     for suit in (HEARTS, DIAMONDS, SPADES, CLUBS):
+#         for rank in range(2, 11):
+#             deck.append((str(rank), suit))
+#             for rankd in "JQKA":
+#                 deck.append((rankd, suit))
+#     random.shuffle(deck)
+#     return deck
+#
+# def display_hands(player_hand, dealer_hand, show_dealer_hand):
+#     print()
+#     if show_dealer_hand:
+#         print(f"Диллер: {get_hand_value(dealer_hand)}")
+#         display_cards(dealer_hand)
+#     else:
+#         print("Диллер: ????")
+#         display_cards([BACKSIDE] + dealer_hand[1:])
+#     print(f"Игрок: {get_hand_value(player_hand)}")
+#     display_cards(player_hand)
+#
+# def get_hand_value(cards):
+#     value = 0
+#     number_of_access = 0
+#     for card in cards:
+#         rank = card[0]
+#         if rank == "A":
+#             number_of_access += 1
+#         elif rank in "KQJ":
+#             value += 10
+#         else:
+#             value += int(rank)
+#     value += number_of_access
+#     for i in range(number_of_access):
+#         if value + 10 <= 21:
+#             value += 10
+#     return value
+#
+# def display_cards(cards):
+#     rows = ['', '', '', '', '']
+#     for i, card in enumerate(cards):
+#         rows[0] += " ___ "
+#         if card == BACKSIDE:
+#             rows[1] += ' |## | '
+#             rows[2] += ' |###| '
+#             rows[3] += ' |_##| '
+#         else:
+#             rank, suit = card
+#             rows[1] += ' |{} | '.format(rank.ljust(2))
+#             rows[2] += ' | {} | '.format(suit)
+#             rows[3] += ' |_{}| '.format(rank.rjust(2, "_"))
+#     for row in rows:
+#         print(row)
+#
+# def get_move(player_hand, money):
+#     while True:
+#         moves = ['(H)it', '(S)tand']
+#         if len(player_hand) == 2 and money > 0:
+#             moves.append('(D)ouble down')
+#         move_prompt = ", ".join(moves) + "> "
+#         move = input(move_prompt).upper()
+#         if move in "HS":
+#             return move
+#         if move == "D" and "(D)ouble down" in moves:
+#             return move
+#
+# if __name__ == "__main__":
+#     main()
+#
+# '''
+# 1) строка 29, изначальное число 5000 кредитов
+# 2) в 31 строке после начала цикла имеется проверка денег, если равно нулю то выходит. на 96 строке есть проверка bet с max_bet при проверке значения
+# 3) в 137 строке в функции display_cards создаются строки, и далее проверяется если карта равно бэксайду то выводится просто карта, иначе добывается переменная и создается карта через индексы
+# 4) в display_hands в начале проверяется итерация и выходит дилер, после выхода с итерации показывается игрок и дальше проходится по функции display_cards
+# 5) соотвествует ли карте, если бэксайд то просто карта а если с символом то его символ и буква(буква в 1 и 3, символ в 2)
+# 6) во первых будет отсуствовать рандом, во вторых при выводе будет выведенна 2 раза карты с дилером и играком
+# 7) проигрыш будет считаться победой. И когда дойдет до итерации с проверкой числа то не будет выхода из-за проигрыша
+# 8) Если передавать true то истинна первая итерация в функции и дальше выводится карты дилера. Если ложь то будет выводится непонятное кол во очков и карты дилера
+# '''
 
-HEARTS = chr(9827)
-DIAMONDS = chr(9830)
-SPADES = chr(9824)
-CLUBS = chr(9827)
-BACKSIDE = 'backside'
-'''
-black jack - классическая карточ игра
-измевстаня как 21. В Этой версии нет
-страхования и разбиения очков
-'''
+#ПРАКТИКА 2
+def basketball_players():
+    players = {
+        "ЛеБрон Джеймс": 206,
+        "Майкл Джордан": 198,
+        "Коби Брайант": 198,
+        "Шакил ОНил": 216,
+        "Стефен Карри": 191
+    }
 
-def main():
-    print('''
-    Правила игры: \n
-    Постаратейсь набрать макс близкое \n
-    к 21 число, не привышая его. \n
-    Короли, дамы, валеты приносят по 10 очков. \n
-    Тузы приносят 1 или 11 очков. \n
-    Карты от 2 до 10 приносят свой номинал. \n
-    (H)it, чтоб взять карту. \n
-    (S)stand, чтоб прекратить брать карты. \n
-    (D)abell, чтоб удвоить вставку при первой игре. \n
-    В случае нечьи ставка возвращается к игроку \n
-    Диллер прекращает тратить карты на 17 очках \n
-    ''')
-    money = 5000
     while True:
-        if money <= 0:
-            print('''
-            Ты проиграл, у тебя закончились кредиты.
-            ''')
-            sys.exit()
-        print(f"Кредиты: {money}")
-        bet = get_bet(money)
-        deck = get_deck()
-        dealer_hand = [deck.pop(), deck.pop()]
-        player_hand = [deck.pop(), deck.pop()]
-        print(f"Ставка: {bet}")
-        while True:
-            display_hands(player_hand, dealer_hand, False)
-            print()
-            if get_hand_value(player_hand) > 21:
-                break
-            move = get_move(player_hand, money - bet)
-            if move == 'D':
-                additional_bet = get_bet(min(bet, (money - bet)))
-                bet += additional_bet
-                print(f"Ставка изменилась => {bet}")
-            if move in ("H", "D"):
-                new_card = deck.pop()
-                rank, suit = new_card
-                print(f"выпала карта {rank} номиналом {suit}")
-                player_hand.append(new_card)
-                if get_hand_value(player_hand) > 21:
-                    continue
-            if move in ("S", "N", "D"):
-                break
-        if get_hand_value(player_hand) <= 21:
-            while get_hand_value(dealer_hand) < 17:
-                print("Диллер берет карту")
-                dealer_hand.append(deck.pop())
-                display_hands(player_hand, dealer_hand, False)
-                if get_hand_value(dealer_hand) > 21:
-                    break
-                input("для продолжения нажмите enter...")
-                print("\n\n")
-        display_hands(player_hand, dealer_hand, True)
-        player_value = get_hand_value(player_hand)
-        dealer_value =  get_hand_value(dealer_hand)
-        if dealer_value > 21:
-            print(f"Диллер перебрал, выйграл ставку {bet}")
-            money += bet
-        elif player_value > 21 or player_value < dealer_value:
-            print("Ты проиграл!")
-            money -= bet
-        elif player_value > dealer_value:
-            print("Ты победил")
-            money += bet
-        elif player_value == dealer_value:
-            print("Ничья, победителя нету")
-        input("для продолжения нажмите enter...")
+        print("баскетбольный справочник")
+        print("1. Показать всех баскетболистов")
+        print("2. Добавить баскетболиста")
+        print("3. Удалить баскетболиста")
+        print("4. Найти баскетболиста")
+        print("5. Изменить рост баскетболиста")
+        print("0. Выход")
 
-def get_bet(max_bet):
+        choice = input("Выберите действие: ")
+
+        if choice == '1':
+            print("\nСписок баскетболистов:")
+            for name, height in players.items():
+                print(f"{name}: {height} см")
+
+        elif choice == '2':
+            name = input("Введите ФИО баскетболиста: ")
+            try:
+                height = int(input("Введите рост (в см): "))
+                players[name] = height
+                print(f"Баскетболист {name} добавлен!")
+            except:
+                print("Ошибка! Рост должен быть числом.")
+
+        elif choice == '3':
+            name = input("Введите ФИО баскетболиста для удаления: ")
+            if name in players:
+                del players[name]
+                print(f"Баскетболист {name} удален!")
+            else:
+                print("Баскетболист не найден!")
+
+        elif choice == '4':
+            name = input("Введите ФИО для поиска: ")
+            if name in players:
+                print(f"{name}: {players[name]} см")
+            else:
+                print("Баскетболист не найден!")
+
+        elif choice == '5':
+            name = input("Введите ФИО баскетболиста: ")
+            if name in players:
+                try:
+                    new_height = int(input("Введите новый рост: "))
+                    players[name] = new_height
+                    print("Рост обновлен!")
+                except:
+                    print("Ошибка! Рост должен быть числом.")
+            else:
+                print("Баскетболист не найден!")
+
+        elif choice == '0':
+            print("Выход из программы.")
+            break
+
+
+basketball_players()
+
+#num2
+def english_french_dictionary():
+    dictionary = {
+        "hello": "bonjour",
+        "goodbye": "au revoir",
+        "thank you": "merci",
+        "yes": "oui",
+        "no": "non"
+    }
+
     while True:
-        bet = input(f"Сколько хотите поставить от 1-{max_bet} \n"
-                    "Ваш выбор").upper().strip()
-        if bet == "QUIT":
-            print("Выход")
-            sys.exit()
-        if not bet.isdecimal():
-            continue
-        bet = int(bet)
-        if 1 <= bet <= max_bet:
-            return bet
+        print("АНГЛО-ФРАНЦУЗСКИЙ СЛОВАРЬ")
+        print("1. Показать все слова")
+        print("2. Добавить слово")
+        print("3. Удалить слово")
+        print("4. Найти перевод")
+        print("5. Изменить перевод")
+        print("0. Выход")
 
-def get_deck():
-    deck = []
-    for suit in (HEARTS, DIAMONDS, SPADES, CLUBS):
-        for rank in range(2, 11):
-            deck.append((str(rank), suit))
-            for rankd in "JQKA":
-                deck.append((rankd, suit))
-    random.shuffle(deck)
-    return deck
+        choice = input("Выберите действие: ")
 
-def display_hands(player_hand, dealer_hand, show_dealer_hand):
-    print()
-    if show_dealer_hand:
-        print(f"Диллер: {get_hand_value(dealer_hand)}")
-        display_cards(dealer_hand)
-    else:
-        print("Диллер: ????")
-        display_cards([BACKSIDE] + dealer_hand[1:])
-    print(f"Игрок: {get_hand_value(player_hand)}")
-    display_cards(player_hand)
+        if choice == '1':
+            print("\nСловарь:")
+            for eng, fr in dictionary.items():
+                print(f"{eng} -> {fr}")
 
-def get_hand_value(cards):
-    value = 0
-    number_of_access = 0
-    for card in cards:
-        rank = card[0]
-        if rank == "A":
-            number_of_access += 1
-        elif rank in "KQJ":
-            value += 10
-        else:
-            value += int(rank)
-    value += number_of_access
-    for i in range(number_of_access):
-        if value + 10 <= 21:
-            value += 10
-    return value
+        elif choice == '2':
+            eng_word = input("Введите английское слово: ").lower()
+            fr_word = input("Введите французский перевод: ").lower()
+            dictionary[eng_word] = fr_word
+            print("Слово добавлено!")
 
-def display_cards(cards):
-    rows = ['', '', '', '', '']
-    for i, card in enumerate(cards):
-        rows[0] += " ___ "
-        if card == BACKSIDE:
-            rows[1] += ' |## | '
-            rows[2] += ' |###| '
-            rows[3] += ' |_##| '
-        else:
-            rank, suit = card
-            rows[1] += ' |{} | '.format(rank.ljust(2))
-            rows[2] += ' | {} | '.format(suit)
-            rows[3] += ' |_{}| '.format(rank.rjust(2, "_"))
-    for row in rows:
-        print(row)
+        elif choice == '3':
+            eng_word = input("Введите английское слово для удаления: ").lower()
+            if eng_word in dictionary:
+                del dictionary[eng_word]
+                print("Слово удалено!")
+            else:
+                print("Слово не найдено!")
 
-def get_move(player_hand, money):
+        elif choice == '4':
+            eng_word = input("Введите английское слово: ").lower()
+            if eng_word in dictionary:
+                print(f"{eng_word} -> {dictionary[eng_word]}")
+            else:
+                print("Слово не найдено в словаре!")
+
+        elif choice == '5':
+            eng_word = input("Введите английское слово: ").lower()
+            if eng_word in dictionary:
+                new_translation = input("Введите новый перевод: ").lower()
+                dictionary[eng_word] = new_translation
+                print("Перевод обновлен!")
+            else:
+                print("Слово не найдено!")
+
+        elif choice == '0':
+            print("До свидания!")
+            break
+
+english_french_dictionary()
+
+
+#num3
+def company_database():
+    employees = {
+        1: {
+            "ФИО": "Иванов Иван Иванович",
+            "телефон": "+7 912 345-67-89",
+            "email": "ivanov@company.ru",
+            "должность": "Менеджер",
+            "кабинет": "101",
+            "skype": "ivanov_company"
+        },
+        2: {
+            "ФИО": "Петрова Анна Сергеевна",
+            "телефон": "+7 923 456-78-90",
+            "email": "petrova@company.ru",
+            "должность": "Программист",
+            "кабинет": "205",
+            "skype": "petrova_company"
+        }
+    }
+
+    next_id = 3
+
     while True:
-        moves = ['(H)it', '(S)tand']
-        if len(player_hand) == 2 and money > 0:
-            moves.append('(D)ouble down')
-        move_prompt = ", ".join(moves) + "> "
-        move = input(move_prompt).upper()
-        if move in "HS":
-            return move
-        if move == "D" and "(D)ouble down" in moves:
-            return move
+        print("БАЗА ДАННЫХ ФИРМЫ")
+        print("1. Показать всех сотрудников")
+        print("2. Добавить сотрудника")
+        print("3. Удалить сотрудника")
+        print("4. Найти сотрудника")
+        print("5. Изменить данные сотрудника")
+        print("0. Выход")
 
-if __name__ == "__main__":
-    main()
+        choice = input("Выберите действие: ")
 
-'''
-1) строка 29, изначальное число 5000 кредитов
-2) в 31 строке после начала цикла имеется проверка денег, если равно нулю то выходит. на 96 строке есть проверка bet с max_bet при проверке значения
-3) в 137 строке в функции display_cards создаются строки, и далее проверяется если карта равно бэксайду то выводится просто карта, иначе добывается переменная и создается карта через индексы
-4) в display_hands в начале проверяется итерация и выходит дилер, после выхода с итерации показывается игрок и дальше проходится по функции display_cards
-5) соотвествует ли карте, если бэксайд то просто карта а если с символом то его символ и буква(буква в 1 и 3, символ в 2)
-6) во первых будет отсуствовать рандом, во вторых при выводе будет выведенна 2 раза карты с дилером и играком
-7) проигрыш будет считаться победой. И когда дойдет до итерации с проверкой числа то не будет выхода из-за проигрыша
-8) Если передавать true то истинна первая итерация в функции и дальше выводится карты дилера. Если ложь то будет выводится непонятное кол во очков и карты дилера
-'''
+        if choice == '1':
+            print("\nСписок сотрудников:")
+            for emp_id, info in employees.items():
+                print(f"ID: {emp_id}")
+                for key, value in info.items():
+                    print(f"  {key}: {value}")
+
+        elif choice == '2':
+            print("\nДобавление нового сотрудника:")
+            new_employee = {}
+            new_employee["ФИО"] = input("ФИО: ")
+            new_employee["телефон"] = input("Телефон: ")
+            new_employee["email"] = input("Email: ")
+            new_employee["должность"] = input("Должность: ")
+            new_employee["кабинет"] = input("Номер кабинета: ")
+            new_employee["skype"] = input("Skype: ")
+
+            employees[next_id] = new_employee
+            print(f"Сотрудник добавлен с ID: {next_id}")
+            next_id += 1
+
+        elif choice == '3':
+            try:
+                emp_id = int(input("Введите ID сотрудника для удаления: "))
+                if emp_id in employees:
+                    name = employees[emp_id]["ФИО"]
+                    del employees[emp_id]
+                    print(f"Сотрудник {name} удален!")
+                else:
+                    print("Сотрудник не найден!")
+            except:
+                print("Ошибка! Введите числовой ID.")
+
+        elif choice == '4':
+            search = input("Введите ФИО или ID для поиска: ")
+            found = False
+
+            try:
+                emp_id = int(search)
+                if emp_id in employees:
+                    print("\nНайден сотрудник:")
+                    for key, value in employees[emp_id].items():
+                        print(f"{key}: {value}")
+                    found = True
+            except:
+                pass
+
+            if not found:
+                for emp_id, info in employees.items():
+                    if search.lower() in info["ФИО"].lower():
+                        print(f"\nID: {emp_id}")
+                        for key, value in info.items():
+                            print(f"{key}: {value}")
+                        found = True
+                        break
+
+            if not found:
+                print("Сотрудник не найден!")
+
+        elif choice == '5':
+            try:
+                emp_id = int(input("Введите ID сотрудника: "))
+                if emp_id in employees:
+                    print("\nТекущие данные:")
+                    for key, value in employees[emp_id].items():
+                        print(f"{key}: {value}")
+
+                    field = input("\nКакое поле изменить? (ФИО, телефон, email, должность, кабинет, skype): ").lower()
+                    if field in employees[emp_id]:
+                        new_value = input(f"Введите новое значение для {field}: ")
+                        employees[emp_id][field] = new_value
+                        print("Данные обновлены!")
+                    else:
+                        print("Неверное название поля!")
+                else:
+                    print("Сотрудник не найден!")
+            except:
+                print("Ошибка! Введите числовой ID.")
+
+        elif choice == '0':
+            print("Выход из программы.")
+            break
+
+
+company_database()
+
+#num4
+def book_collection():
+    books = {
+        1: {
+            "автор": "Лев Толстой",
+            "название": "Война и мир",
+            "жанр": "Роман",
+            "год": 1867,
+            "страницы": 1225,
+            "издательство": "Русский вестник"
+        },
+        2: {
+            "автор": "Федор Достоевский",
+            "название": "Преступление и наказание",
+            "жанр": "Роман",
+            "год": 1866,
+            "страницы": 672,
+            "издательство": "Русский вестник"
+        }
+    }
+
+    next_id = 3
+
+    while True:
+        print("\n" + "=" * 50)
+        print("КНИЖНАЯ КОЛЛЕКЦИЯ")
+        print("=" * 50)
+        print("1. Показать все книги")
+        print("2. Добавить книгу")
+        print("3. Удалить книгу")
+        print("4. Найти книгу")
+        print("5. Изменить данные книги")
+        print("0. Выход")
+
+        choice = input("Выберите действие: ")
+
+        if choice == '1':
+            print("\nКоллекция книг:")
+            print("-" * 60)
+            for book_id, info in books.items():
+                print(f"ID: {book_id}")
+                print(f"  Автор: {info['автор']}")
+                print(f"  Название: {info['название']}")
+                print(f"  Жанр: {info['жанр']}")
+                print(f"  Год: {info['год']}")
+                print(f"  Страниц: {info['страницы']}")
+                print(f"  Издательство: {info['издательство']}")
+                print("-" * 30)
+
+        elif choice == '2':
+            print("\nДобавление новой книги:")
+            new_book = {}
+            new_book["автор"] = input("Автор: ")
+            new_book["название"] = input("Название книги: ")
+            new_book["жанр"] = input("Жанр: ")
+            try:
+                new_book["год"] = int(input("Год издания: "))
+                new_book["страницы"] = int(input("Количество страниц: "))
+            except:
+                print("Ошибка! Год и страницы должны быть числами.")
+                continue
+            new_book["издательство"] = input("Издательство: ")
+
+            books[next_id] = new_book
+            print(f"Книга добавлена с ID: {next_id}")
+            next_id += 1
+
+        elif choice == '3':
+            try:
+                book_id = int(input("Введите ID книги для удаления: "))
+                if book_id in books:
+                    title = books[book_id]["название"]
+                    del books[book_id]
+                    print(f"Книга '{title}' удалена!")
+                else:
+                    print("Книга не найдена!")
+            except:
+                print("Ошибка! Введите числовой ID.")
+
+        elif choice == '4':
+            search = input("Введите автора или название книги для поиска: ").lower()
+            found = False
+
+            for book_id, info in books.items():
+                if (search in info["автор"].lower() or
+                        search in info["название"].lower() or
+                        search in info["жанр"].lower()):
+                    print(f"\nID: {book_id}")
+                    print(f"  Автор: {info['автор']}")
+                    print(f"  Название: {info['название']}")
+                    print(f"  Жанр: {info['жанр']}")
+                    print(f"  Год: {info['год']}")
+                    print(f"  Страниц: {info['страницы']}")
+                    print(f"  Издательство: {info['издательство']}")
+                    found = True
+
+            if not found:
+                print("Книги не найдены!")
+
+        elif choice == '5':
+            try:
+                book_id = int(input("Введите ID книги: "))
+                if book_id in books:
+                    print("\nТекущие данные книги:")
+                    for key, value in books[book_id].items():
+                        print(f"{key}: {value}")
+
+                    field = input("\nКакое поле изменить? (автор, название, жанр, год, страницы, издательство): ")
+                    if field in books[book_id]:
+                        if field in ["год", "страницы"]:
+                            try:
+                                new_value = int(input(f"Введите новое значение для {field}: "))
+                            except:
+                                print("Ошибка! Значение должно быть числом.")
+                                continue
+                        else:
+                            new_value = input(f"Введите новое значение для {field}: ")
+
+                        books[book_id][field] = new_value
+                        print("Данные обновлены!")
+                    else:
+                        print("Неверное название поля!")
+                else:
+                    print("Книга не найдена!")
+            except:
+                print("Ошибка! Введите числовой ID.")
+
+        elif choice == '0':
+            print("Выход из программы.")
+            break
+
+book_collection()
