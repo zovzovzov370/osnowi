@@ -1680,14 +1680,16 @@ print("результат: ", result)
 # 8) Если передавать true то истинна первая итерация в функции и дальше выводится карты дилера. Если ложь то будет выводится непонятное кол во очков и карты дилера
 # '''
 
-#ПРАКТИКА 2
+#практика 2
+#задание 1
 def basketball_players():
+
     players = {
-        "ЛеБрон Джеймс": 206,
+        "Леброн Джеймс": 246,
         "Майкл Джордан": 198,
-        "Коби Брайант": 198,
-        "Шакил ОНил": 216,
-        "Стефен Карри": 191
+        "Стефен Карри": 191,
+        "Шакил ОНил": 236,
+        "Коби Брайант": 198
     }
 
     while True:
@@ -1749,7 +1751,7 @@ def basketball_players():
 
 basketball_players()
 
-#num2
+#задание 2
 def english_french_dictionary():
     dictionary = {
         "hello": "bonjour",
@@ -1760,7 +1762,7 @@ def english_french_dictionary():
     }
 
     while True:
-        print("АНГЛО-ФРАНЦУЗСКИЙ СЛОВАРЬ")
+        print("Англо-французкий словарь")
         print("1. Показать все слова")
         print("2. Добавить слово")
         print("3. Удалить слово")
@@ -1776,10 +1778,10 @@ def english_french_dictionary():
                 print(f"{eng} -> {fr}")
 
         elif choice == '2':
-            eng_word = input("Введите английское слово: ").lower()
+            eng_word = input("Введите слово на английском: ").lower()
             fr_word = input("Введите французский перевод: ").lower()
             dictionary[eng_word] = fr_word
-            print("Слово добавлено!")
+            print("Слово добавлено")
 
         elif choice == '3':
             eng_word = input("Введите английское слово для удаления: ").lower()
@@ -1787,45 +1789,45 @@ def english_french_dictionary():
                 del dictionary[eng_word]
                 print("Слово удалено!")
             else:
-                print("Слово не найдено!")
+                print("Слово не найдено")
 
         elif choice == '4':
             eng_word = input("Введите английское слово: ").lower()
             if eng_word in dictionary:
                 print(f"{eng_word} -> {dictionary[eng_word]}")
             else:
-                print("Слово не найдено в словаре!")
+                print("Слово не найдено в словаре")
 
         elif choice == '5':
             eng_word = input("Введите английское слово: ").lower()
             if eng_word in dictionary:
                 new_translation = input("Введите новый перевод: ").lower()
                 dictionary[eng_word] = new_translation
-                print("Перевод обновлен!")
+                print("Перевод обновлен")
             else:
-                print("Слово не найдено!")
+                print("Слово не найдено")
 
         elif choice == '0':
-            print("До свидания!")
+            print("До свидания")
             break
 
 english_french_dictionary()
 
 
-#num3
+#задание 3
 def company_database():
     employees = {
         1: {
-            "ФИО": "Иванов Иван Иванович",
-            "телефон": "+7 912 345-67-89",
-            "email": "ivanov@company.ru",
+            "ФИО": "Артем Филатов Борисович",
+            "телефон": "+7 912 245-57-89",
+            "email": "filatov@company.ru",
             "должность": "Менеджер",
             "кабинет": "101",
-            "skype": "ivanov_company"
+            "skype": "filatov_company"
         },
         2: {
-            "ФИО": "Петрова Анна Сергеевна",
-            "телефон": "+7 923 456-78-90",
+            "ФИО": "Петрова Ирина Антоновна",
+            "телефон": "+7 923 457-80-90",
             "email": "petrova@company.ru",
             "должность": "Программист",
             "кабинет": "205",
@@ -1836,7 +1838,7 @@ def company_database():
     next_id = 3
 
     while True:
-        print("БАЗА ДАННЫХ ФИРМЫ")
+        print("база данных")
         print("1. Показать всех сотрудников")
         print("2. Добавить сотрудника")
         print("3. Удалить сотрудника")
@@ -1877,7 +1879,7 @@ def company_database():
                 else:
                     print("Сотрудник не найден!")
             except:
-                print("Ошибка! Введите числовой ID.")
+                print("Ошибка, Введите числовой ID.")
 
         elif choice == '4':
             search = input("Введите ФИО или ID для поиска: ")
@@ -1932,7 +1934,7 @@ def company_database():
 
 company_database()
 
-#num4
+#задание 4
 def book_collection():
     books = {
         1: {
@@ -1956,9 +1958,7 @@ def book_collection():
     next_id = 3
 
     while True:
-        print("\n" + "=" * 50)
         print("КНИЖНАЯ КОЛЛЕКЦИЯ")
-        print("=" * 50)
         print("1. Показать все книги")
         print("2. Добавить книгу")
         print("3. Удалить книгу")
@@ -1970,7 +1970,6 @@ def book_collection():
 
         if choice == '1':
             print("\nКоллекция книг:")
-            print("-" * 60)
             for book_id, info in books.items():
                 print(f"ID: {book_id}")
                 print(f"  Автор: {info['автор']}")
@@ -1979,7 +1978,6 @@ def book_collection():
                 print(f"  Год: {info['год']}")
                 print(f"  Страниц: {info['страницы']}")
                 print(f"  Издательство: {info['издательство']}")
-                print("-" * 30)
 
         elif choice == '2':
             print("\nДобавление новой книги:")
@@ -2029,7 +2027,7 @@ def book_collection():
                     found = True
 
             if not found:
-                print("Книги не найдены!")
+                print("Книги не найдены")
 
         elif choice == '5':
             try:
@@ -2051,11 +2049,11 @@ def book_collection():
                             new_value = input(f"Введите новое значение для {field}: ")
 
                         books[book_id][field] = new_value
-                        print("Данные обновлены!")
+                        print("Данные обновлены")
                     else:
-                        print("Неверное название поля!")
+                        print("Неверное название поля")
                 else:
-                    print("Книга не найдена!")
+                    print("Книга не найдена")
             except:
                 print("Ошибка! Введите числовой ID.")
 
