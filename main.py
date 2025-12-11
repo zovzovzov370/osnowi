@@ -2064,104 +2064,129 @@ print("результат: ", result)
 # book_collection()
 
 #num1
-class animal:
-    def __init__(self, nickname):
-        self.nickname = nickname
+# class animal:
+#     def __init__(self, nickname):
+#         self.nickname = nickname
+#
+#     def __str__(self):
+#         return self.nickname
+#
+# class cat(animal):
+#     def __init__(self, nickname):
+#         super().__init__(nickname)
+#
+#     def voice(self):
+#         print("мяу!")
+#
+#     def run(self):
+#         print("бегу!")
+#
+# class parrot(animal):
+#     def __init__(self, nickname):
+#         super().__init__(nickname)
+#
+#     def voice(self):
+#         print("кар!")
+#
+#     def fly(self):
+#         print("лечу!")
+#
+#
+# #num2
+# class сообщение:
+#     def __init__(self, отправитель, получатель):
+#         self.отправитель = отправитель
+#         self.получатель = получатель
+#
+#     def покажизаголовок(self):
+#         print(f"от {self.отправитель} к {self.получатель}:")
+#
+# class текстовоесообщение(сообщение):
+#     def __init__(self, отправитель, получатель, текст):
+#         super().__init__(отправитель, получатель)
+#         self.текст = текст
+#
+#     def отправь(self):
+#         self.покажизаголовок()
+#         print(self.текст)
+#
+# class стикерсообщение(сообщение):
+#     def __init__(self, отправитель, получатель, стикер):
+#         super().__init__(отправитель, получатель)
+#         self.стикер = стикер
+#         self.счетчик = 1
+#
+#     def отправь(self):
+#         self.покажизаголовок()
+#         print(f"{self.стикер} {self.счетчик}")
+#         self.счетчик += 1
+#
+#
+# #num3
+# import random
+#
+# class msdice:
+#     def __init__(self, грани):
+#         self.facets = грани
+#
+#     def кинуть(self):
+#         return random.randint(1, self.facets)
+#
+# d10 = msdice(10)
+# print("бросок d10:", d10.кинуть())
+# print("ещё один бросок d10:", d10.кинуть())
+#
+# d20 = msdice(20)
+# print("бросок d20:", d20.кинуть())
+# print("ещё один бросок d20:", d20.кинуть())
+#
+#
+# #num4
+# class player:
+#
+#     def __init__(self, nickname):
+#         self.nickname = nickname
+#         self.exp_points = 0
+#         self.inventory = []
+#
+#     def __str__(self):
+#         return f"player {self.nickname} with {self.exp_points} exp and inventory {self.inventory}"
+#
+#     def addexp(self, exp):
+#         self.exp_points += exp
+#
+#     def additem(self, item):
+#         self.inventory.append(item)
+#
+#     def removeitem(self, item):
+#         if item in self.inventory:
+#             self.inventory.remove(item)
+#
+# #num5
+# def parallel(r1, r2): return r1 * r2 / (r1 + r2)
+# def consec(resistances): return sum(resistances)
 
-    def __str__(self):
-        return self.nickname
 
-class cat(animal):
-    def __init__(self, nickname):
-        super().__init__(nickname)
-
-    def voice(self):
-        print("мяу!")
-
-    def run(self):
-        print("бегу!")
-
-class parrot(animal):
-    def __init__(self, nickname):
-        super().__init__(nickname)
-
-    def voice(self):
-        print("кар!")
-
-    def fly(self):
-        print("лечу!")
-
-
-#num2
-class сообщение:
-    def __init__(self, отправитель, получатель):
-        self.отправитель = отправитель
-        self.получатель = получатель
-
-    def покажизаголовок(self):
-        print(f"от {self.отправитель} к {self.получатель}:")
-
-class текстовоесообщение(сообщение):
-    def __init__(self, отправитель, получатель, текст):
-        super().__init__(отправитель, получатель)
-        self.текст = текст
-
-    def отправь(self):
-        self.покажизаголовок()
-        print(self.текст)
-
-class стикерсообщение(сообщение):
-    def __init__(self, отправитель, получатель, стикер):
-        super().__init__(отправитель, получатель)
-        self.стикер = стикер
-        self.счетчик = 1
-
-    def отправь(self):
-        self.покажизаголовок()
-        print(f"{self.стикер} {self.счетчик}")
-        self.счетчик += 1
-
-
-#num3
-import random
-
-class msdice:
-    def __init__(self, грани):
-        self.facets = грани
-
-    def кинуть(self):
-        return random.randint(1, self.facets)
-
-d10 = msdice(10)
-print("бросок d10:", d10.кинуть())
-print("ещё один бросок d10:", d10.кинуть())
-
-d20 = msdice(20)
-print("бросок d20:", d20.кинуть())
-print("ещё один бросок d20:", d20.кинуть())
-
-
-#num4
-class player:
-
-    def __init__(self, nickname):
-        self.nickname = nickname
-        self.exp_points = 0
-        self.inventory = []
-
-    def __str__(self):
-        return f"player {self.nickname} with {self.exp_points} exp and inventory {self.inventory}"
-
-    def addexp(self, exp):
-        self.exp_points += exp
-
-    def additem(self, item):
-        self.inventory.append(item)
-
-    def removeitem(self, item):
-        if item in self.inventory:
-            self.inventory.remove(item)
-
-#num5
-def parallel(r1, r2): return r1 * r2 / (r1 + r2)
-def consec(resistances): return sum(resistances)
+#дз по ип
+'''
+1.
+Если я закомментирую или вообще удалю строчку 34
+numberOfHeadlines = int(response)
+то прога упадёт с ошибкой. Когда дойдёт до цикла
+for i in range(numberOfHeadlines):
+питон скажет
+NameError: name 'numberOfHeadlines' is not defined
+Потому что переменной просто не существует
+2.
+Если в этой же строчке 34 заменить int(response) просто на response, то переменная numberOfHeadlines станет строкой (например, “10”). А дальше в range(numberOfHeadlines) питон будет ругаться:
+TypeError: 'str' object cannot be interpreted as an integer
+Он хочет число, а его нет
+3.
+Если заменить строку 19
+WHEN = ['Soon', 'This Year', ...]
+на
+WHEN = []
+, то когда программа попытается взять случайное время через random.choice(WHEN), она выдаст ошибку
+IndexError: Cannot choose from an empty sequence
+Потому что выбирать не из чего — список пустой.
+'''
